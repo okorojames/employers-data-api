@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 const MONGO_URI = process.env.MONGO_URI;
-const PORT = process.env.PORT;
 
 // db connection method
 const connectDB = async () => {
