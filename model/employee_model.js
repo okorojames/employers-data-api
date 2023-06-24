@@ -24,4 +24,29 @@ const EmployeeSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
+
+// registration schema
+const AdminSchema = mongoose.Schema(
+  {
+    firstName: {
+      type: String,
+    },
+    lastName: {
+      type: String,
+    },
+    phone: {
+      type: String,
+    },
+    email: {
+      type: String,
+    },
+    password: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
+
+// export schemas
 module.exports = mongoose.model("employee-info", EmployeeSchema);
+module.exports = mongoose.model("admin-info", AdminSchema);
