@@ -16,7 +16,7 @@ const registerController = async (req, res) => {
         password,
       });
 
-      const adminEmail = AdminSchema.findOne({ email });
+      const adminEmail = await AdminSchema.findOne({ email });
       if (adminEmail) {
         return res.status(400).json({ msg: "Email already exist" });
       } else {
