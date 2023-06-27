@@ -42,7 +42,7 @@ const loginAuth = async (req, res) => {
     if (admin && (await bcrypt.compare(password, admin.password))) {
       return res.status(200).json(admin);
     } else {
-      return res.status(400).json({ msg: "Login credentials no valid" });
+      return res.status(400).json({ msg: "Login credentials not valid" });
     }
   } catch (err) {
     res.status(500).json({ msg: err });
