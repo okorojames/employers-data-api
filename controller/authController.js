@@ -1,8 +1,8 @@
 const AdminSchema = require("../model/employee_model");
 const bcrypt = require("bcrypt");
 
-// auth controller
-const authController = async (req, res) => {
+// reg controller
+const registerController = async (req, res) => {
   const { firstName, lastName, phone, email, password } = req.body;
   try {
     if (!firstName || !lastName || !phone || !email || !password) {
@@ -21,9 +21,7 @@ const authController = async (req, res) => {
         return res.status(400).json({ msg: "Email already exist" });
 
       const salt = await bcrypt.genSalt(10);
-      console.log(salt);
       adminInfo.password = await bcrypt.hash(password, salt);
-      console.log(adminInfo);
       await adminInfo.save();
       return res.status(201).json(adminInfo);
     }
@@ -51,4 +49,4 @@ const loginAuth = async (req, res) => {
 };
 
 //
-module.exports = { authController, loginAuth };
+module.exports = { registerController, loginAuth };
