@@ -19,7 +19,7 @@ const registerController = async (req, res) => {
       const adminEmail = AdminSchema.findOne({ email });
       if (adminEmail)
         return res.status(400).json({ msg: "Email already exist" });
-
+      // else
       const salt = await bcrypt.genSalt(10);
       adminInfo.password = await bcrypt.hash(password, salt);
       await adminInfo.save();
