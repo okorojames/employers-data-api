@@ -32,7 +32,11 @@ const postEmployee = async (req, res) => {
 const getEmployees = async (req, res) => {
   try {
     const employees = await EmployeeSchema.find().sort({ createdAt: -1 });
-    res.status(200).json(employees);
+    res.status(200).json({
+      status: "Success",
+      results: employees.length,
+      data: employees,
+    });
   } catch (err) {
     return res.status(500).json({ msg: err });
   }
